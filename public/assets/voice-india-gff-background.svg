@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3F8FF;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#E8F2FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D6E8F8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waveDeep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#071849;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#102A5C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A1F3D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waveMid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a3a7a;stop-opacity:0.85" />
+      <stop offset="50%" style="stop-color:#1e4a8c;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#102A5C;stop-opacity:0.85" />
+    </linearGradient>
+    <linearGradient id="sunriseGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF681A;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#FFAA44;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1E6FD9;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#3B9EFF;stop-opacity:0.4" />
+    </linearGradient>
+    <radialGradient id="sunrise" cx="65%" cy="45%" r="35%">
+      <stop offset="0%" style="stop-color:#FF8833;stop-opacity:0.45" />
+      <stop offset="50%" style="stop-color:#FF681A;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#FF681A;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="techGlow" cx="30%" cy="60%" r="40%">
+      <stop offset="0%" style="stop-color:#1E6FD9;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#1E6FD9;stop-opacity:0" />
+    </radialGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="1440" height="900" fill="url(#skyGrad)"/>
+
+  <!-- Sunrise glow -->
+  <ellipse cx="950" cy="400" rx="500" ry="380" fill="url(#sunrise)"/>
+  <!-- Tech blue glow -->
+  <ellipse cx="430" cy="540" rx="580" ry="320" fill="url(#techGlow)"/>
+
+  <!-- Deep navy background fill lower half -->
+  <path d="M0 580 Q360 540 720 560 Q1080 580 1440 550 L1440 900 L0 900 Z" fill="url(#waveDeep)" opacity="0.95"/>
+
+  <!-- Wave 1 - large deep navy -->
+  <path d="M-50 640 Q180 590 360 620 Q540 650 720 610 Q900 570 1080 600 Q1260 630 1490 590 L1490 900 L-50 900 Z" fill="url(#waveDeep)" opacity="1"/>
+
+  <!-- Wave 2 - mid navy -->
+  <path d="M-50 700 Q200 665 420 685 Q640 705 820 670 Q1000 635 1200 660 Q1360 680 1490 650 L1490 900 L-50 900 Z" fill="url(#waveMid)" opacity="0.8"/>
+
+  <!-- Wave 3 - tech blue accent -->
+  <path d="M-50 750 Q250 720 500 740 Q750 760 950 730 Q1150 700 1490 720 L1490 900 L-50 900 Z" fill="#1E6FD9" opacity="0.25"/>
+
+  <!-- White wave line 1 - thin elegant -->
+  <path d="M-50 595 Q180 560 360 578 Q540 596 720 565 Q900 534 1080 558 Q1260 582 1490 545" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none" filter="url(#blur2)"/>
+
+  <!-- White wave line 2 -->
+  <path d="M-50 640 Q200 608 420 625 Q640 642 820 610 Q1000 578 1200 598 Q1360 618 1490 585" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+
+  <!-- White wave line 3 -->
+  <path d="M-50 680 Q250 652 500 668 Q750 684 950 655 Q1150 626 1490 648" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" fill="none"/>
+
+  <!-- Tech blue accent wave line -->
+  <path d="M-50 620 Q300 595 580 610 Q860 625 1100 598 Q1280 578 1490 560" stroke="#3B9EFF" stroke-width="1.2" fill="none" opacity="0.5" filter="url(#blur2)"/>
+
+  <!-- Sunrise orange accent curve -->
+  <path d="M800 350 Q950 320 1100 360 Q1200 390 1350 370" stroke="#FF681A" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M820 370 Q970 340 1120 375 Q1220 400 1360 385" stroke="#FF8833" stroke-width="0.8" fill="none" opacity="0.3"/>
+
+  <!-- India green subtle accent -->
+  <path d="M50 560 Q200 540 350 555" stroke="#16A34A" stroke-width="1" fill="none" opacity="0.3"/>
+
+  <!-- Dot technology pattern - light particles -->
+  <g opacity="0.35" fill="#1E6FD9">
+    <circle cx="120" cy="300" r="1.5"/>
+    <circle cx="180" cy="260" r="1"/>
+    <circle cx="240" cy="320" r="1.5"/>
+    <circle cx="160" cy="350" r="1"/>
+    <circle cx="300" cy="280" r="1.5"/>
+    <circle cx="360" cy="340" r="1"/>
+    <circle cx="420" cy="290" r="1.5"/>
+    <circle cx="480" cy="260" r="1"/>
+    <circle cx="540" cy="310" r="1.5"/>
+    <circle cx="600" cy="270" r="1"/>
+    <circle cx="660" cy="300" r="1.5"/>
+    <circle cx="720" cy="260" r="1"/>
+    <circle cx="780" cy="290" r="1.5"/>
+    <circle cx="840" cy="320" r="1"/>
+    <circle cx="900" cy="270" r="1.5"/>
+    <circle cx="960" cy="300" r="1"/>
+    <circle cx="1020" cy="280" r="1.5"/>
+    <circle cx="1080" cy="310" r="1"/>
+    <circle cx="1140" cy="270" r="1.5"/>
+    <circle cx="1200" cy="300" r="1"/>
+    <circle cx="1260" cy="280" r="1.5"/>
+    <circle cx="1320" cy="260" r="1"/>
+    <circle cx="1380" cy="300" r="1.5"/>
+  </g>
+  <g opacity="0.2" fill="#071849">
+    <circle cx="150" cy="400" r="1.5"/>
+    <circle cx="210" cy="440" r="1"/>
+    <circle cx="330" cy="420" r="1.5"/>
+    <circle cx="450" cy="450" r="1"/>
+    <circle cx="570" cy="410" r="1.5"/>
+    <circle cx="690" cy="440" r="1"/>
+    <circle cx="810" cy="420" r="1.5"/>
+    <circle cx="930" cy="450" r="1"/>
+    <circle cx="1050" cy="410" r="1.5"/>
+    <circle cx="1170" cy="440" r="1"/>
+    <circle cx="1290" cy="420" r="1.5"/>
+    <circle cx="1400" cy="390" r="1"/>
+  </g>
+
+  <!-- Light particles drifting -->
+  <g opacity="0.6" fill="white">
+    <circle cx="200" cy="500" r="1.5"/>
+    <circle cx="400" cy="480" r="1"/>
+    <circle cx="600" cy="510" r="1.5"/>
+    <circle cx="800" cy="490" r="1"/>
+    <circle cx="1000" cy="520" r="1.5"/>
+    <circle cx="1200" cy="500" r="1"/>
+    <circle cx="100" cy="540" r="1"/>
+    <circle cx="300" cy="560" r="1.5"/>
+    <circle cx="700" cy="555" r="1"/>
+    <circle cx="1100" cy="545" r="1.5"/>
+    <circle cx="1400" cy="530" r="1"/>
+  </g>
+
+  <!-- Sunrise orange particle accent -->
+  <g opacity="0.5" fill="#FF681A">
+    <circle cx="900" cy="380" r="2"/>
+    <circle cx="1050" cy="340" r="1.5"/>
+    <circle cx="1150" cy="380" r="1"/>
+    <circle cx="980" cy="420" r="1.5"/>
+    <circle cx="1200" cy="360" r="2"/>
+    <circle cx="850" cy="400" r="1"/>
+    <circle cx="1100" cy="420" r="1.5"/>
+  </g>
+</svg>
