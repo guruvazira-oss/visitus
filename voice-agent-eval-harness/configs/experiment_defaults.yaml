@@ -1,0 +1,31 @@
+annotation:
+  sample_size: 30
+  per_category: 6
+  sampling_seed: 7301
+  annotator_id_default: "annotator_01"
+  holdout_sample_size: 20
+  holdout_sampling_seed: 7302
+
+threshold_sweep:
+  cutoffs: [50, 55, 60, 65, 70, 75, 80, 85, 90]
+  borderline_band: 5.0   # +/- points around the cutoff counted as "borderline"
+
+statistics:
+  confidence_level: 0.95
+  bootstrap_resamples: 2000
+  bootstrap_seed: 11
+
+# ILLUSTRATIVE, HYPOTHETICAL assumptions for the business impact simulator.
+# None of these values are sourced from a real institution.
+business_impact:
+  calls_per_month: 50000
+  review_cost_per_call: 6.50          # currency units per reviewed call
+  review_minutes_per_call: 9.0
+  share_failed_reviewed: 0.50         # fraction of FAIL calls sent to human QA
+  share_borderline_reviewed: 0.25     # fraction of borderline PASS calls sent to QA
+  share_review_required_reviewed: 1.0 # REVIEW_REQUIRED calls are always reviewed by default
+  additional_random_audit_share: 0.02 # random QA sample of remaining PASS calls
+  false_pass_cost: 120.0              # illustrative exposure per undetected bad call
+  false_fail_cost: 15.0               # illustrative cost per wrongly failed good call
+  reviewer_hours_capacity_per_month: 1600
+  fixed_monthly_platform_cost: 2500.0

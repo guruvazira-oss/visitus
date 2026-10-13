@@ -1,0 +1,40 @@
+{
+  "experiment_id": "demo_heuristic_v3",
+  "timestamp": "2026-10-13T06:51:35+00:00",
+  "provenance": "demo_heuristic",
+  "dataset_version": "bfsi-collections-v1.0",
+  "rubric_version": "v3",
+  "rubric_hash": "b24cd60b8f62f57b",
+  "judge_provider": "heuristic",
+  "judge_model": "heuristic-baseline-v1",
+  "served_models": [
+    "heuristic-baseline-v1"
+  ],
+  "is_llm": false,
+  "prompt_version": "judge-prompt-v1",
+  "evaluation_config_hash": "3a4c988cf84b",
+  "evaluation_config": {
+    "provider": "heuristic",
+    "model": "heuristic-baseline-v1",
+    "rubric_version": "v3",
+    "rubric_hash": "b24cd60b8f62f57b",
+    "prompt_version": "judge-prompt-v1",
+    "max_tokens": 16000,
+    "effort": "n/a",
+    "pass_threshold": 75.0,
+    "unconfirmed_gate_policy": "review_required",
+    "route_injection_flagged_passes_to_review": true,
+    "cross_check_with_lexical_screen": true
+  },
+  "scope": "all",
+  "n_requested": 100,
+  "transcript_ids": "all",
+  "n_successful": 100,
+  "n_failed": 0,
+  "status": "complete",
+  "artifacts": {
+    "evaluations": "results/demo/demo_heuristic_v3/evaluations.jsonl",
+    "failures": "results/demo/demo_heuristic_v3/failures.jsonl",
+    "scores_csv": "results/demo/demo_heuristic_v3/scores.csv"
+  }
+}

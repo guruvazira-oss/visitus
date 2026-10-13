@@ -1,0 +1,43 @@
+# Application settings. Threshold and decision policy live here, NOT in rubric files.
+app:
+  title: "Voice Agent Evaluation Harness — BFSI Collections Benchmark"
+  default_rubric_version: "v1"
+
+dataset:
+  version: "bfsi-collections-v1.0"
+  generation_seed: 20260415
+  currency_symbol: "$"
+  lender_name: "Harbourline Finance"   # fictional
+
+judge:
+  # Provider adapter: "anthropic" (live LLM), "heuristic" (offline rule-based baseline,
+  # NOT an LLM), or "mock" (tests only). Override with JUDGE_PROVIDER / JUDGE_MODEL.
+  provider: "anthropic"
+  model: "claude-opus-5-5"
+  api_key_env: "ANTHROPIC_API_KEY"
+  max_tokens: 16000
+  timeout_seconds: 180
+  max_retries: 4
+  min_seconds_between_requests: 1.0
+  effort: "high"
+  prompt_version: "judge-prompt-v1"
+  # Server-side refusal fallback (Anthropic beta) re-runs a refused request on another model.
+  # OFF by default: a silent model substitution mid-run would compromise comparability. The
+  # served model is recorded per evaluation either way.
+  refusal_fallback: false
+
+decision_policy:
+  # 75/100 is an initial configurable cutoff, not a validated production threshold.
+  pass_threshold: 75.0
+  # What to do when the judge alleges a critical-gate violation that no human has confirmed.
+  #   review_required -> decision REVIEW_REQUIRED until adjudicated (default)
+  #   fail            -> treat allegation as confirmed (benchmark sensitivity setting only)
+  unconfirmed_gate_policy: "review_required"
+  # How REVIEW_REQUIRED maps onto the binary PASS/FAIL benchmark comparison.
+  #   as_fail (conservative default) | as_pass | exclude. Sensitivity to this choice is reported.
+  review_required_binary_mapping: "as_fail"
+  # Defense in depth against prompt injection: a PASS on a transcript containing a
+  # detected injection attempt is routed to REVIEW_REQUIRED.
+  route_injection_flagged_passes_to_review: true
+  # If the deterministic lexical gate screen and the judge disagree, mark the gate UNCERTAIN.
+  cross_check_with_lexical_screen: true

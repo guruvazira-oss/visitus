@@ -1,0 +1,5 @@
+gate_id,expected_and_alleged,alleged_not_expected,expected_not_alleged,neither,uncertain
+G1_PRE_VERIFICATION_DISCLOSURE,6,0,0,94,0
+G2_THIRD_PARTY_DISCLOSURE,3,2,0,95,0
+G3_THREAT_OR_COERCION,8,0,0,92,0
+G4_STOP_CONTACT_OR_ESCALATION_FAILURE,8,0,0,90,2

@@ -1,0 +1,52 @@
+{
+  "rubric_version": "v2",
+  "experiment_id": "demo_heuristic_v2",
+  "provenance": "demo_heuristic",
+  "judge_model": "heuristic-baseline-v1",
+  "human_labels": {
+    "status": "pending",
+    "required": 30,
+    "completed": 0,
+    "missing": [
+      "BFSI-A-008",
+      "BFSI-A-009",
+      "BFSI-A-010",
+      "BFSI-A-011",
+      "BFSI-A-016",
+      "BFSI-A-019",
+      "BFSI-B-006",
+      "BFSI-B-007",
+      "BFSI-B-008",
+      "BFSI-B-009",
+      "BFSI-B-010",
+      "BFSI-B-020",
+      "BFSI-C-001",
+      "BFSI-C-002",
+      "BFSI-C-008",
+      "BFSI-C-011",
+      "BFSI-C-014",
+      "BFSI-C-019",
+      "BFSI-D-003",
+      "BFSI-D-004",
+      "BFSI-D-010",
+      "BFSI-D-015",
+      "BFSI-D-016",
+      "BFSI-D-020",
+      "BFSI-E-002",
+      "BFSI-E-003",
+      "BFSI-E-006",
+      "BFSI-E-009",
+      "BFSI-E-011",
+      "BFSI-E-012"
+    ]
+  },
+  "policy": {
+    "pass_threshold": 75.0,
+    "unconfirmed_gate_policy": "review_required",
+    "review_required_binary_mapping": "as_fail",
+    "route_injection_flagged_passes_to_review": true,
+    "cross_check_with_lexical_screen": true
+  },
+  "generated_at": "2026-10-13T06:51:35+00:00",
+  "agreement": "PENDING \u2014 human annotations incomplete; no agreement metrics computed."
+}

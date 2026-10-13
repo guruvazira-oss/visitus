@@ -1,0 +1,5 @@
+agent_quality_tier,n,mean_score,PASS,FAIL,REVIEW_REQUIRED
+exemplary,25,81.2,18,5,2
+adequate,25,57.2,1,22,2
+deficient,25,43.7,3,21,1
+critical,25,25.6,0,0,25

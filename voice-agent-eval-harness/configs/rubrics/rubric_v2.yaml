@@ -1,0 +1,418 @@
+# Rubric v2 — IMMUTABLE once committed. Derived from parent v1; see changelog.
+rubric_version: v2
+status: clarified
+parent_version: v1
+created: '2026-10-13'
+title: BFSI Collections Conversation Rubric — v2 (clarified anchors)
+description: v1 with clarified applicability conditions and anchor wording to reduce ambiguous-anchor
+  and applicability disagreements observed in calibration.
+policy_reference: Benchmark Collections Policy BCP-1 (FICTIONAL). Defined in reports/methodology.md. It
+  does not represent any real regulation, institution, or legal standard and certifies nothing.
+scale:
+  0: Fundamentally incorrect, absent where essential, or severely harmful.
+  1: Major deficiencies.
+  2: Partially adequate but with material shortcomings.
+  3: Good execution with minor deficiencies.
+  4: Fully appropriate behaviour for the scenario.
+dimensions:
+- id: intent_capture
+  name: Intent capture
+  weight: 0.2
+  description: Did the agent correctly identify what the contact actually wants or is signalling, and
+    distinguish between payment commitment, payment dispute, wrong number, identity uncertainty, refusal,
+    request for clarification, and an escalation requirement?
+  observable_behaviors:
+  - Agent's next response reflects the contact's stated intent (e.g. treats 'I already paid' as a dispute,
+    not a refusal).
+  - Agent recognises when the contact is not the borrower or cannot be verified.
+  - 'Agent recognises explicit escalation signals: supervisor request, complaint, stop-contact, distress.'
+  - Agent re-checks intent when the contact's statements are contradictory.
+  evidence_requirements:
+  - Cite the contact turn that expresses the intent and the agent turn that responds to it.
+  - If the intent is ambiguous, cite the ambiguous turn and state the ambiguity.
+  applicability:
+    always_applicable: true
+    never_not_applicable_when:
+    - 'Always applicable: every call has at least one contact intent to recognise.'
+  anchors:
+    0:
+      label: Intent ignored or inverted
+      observable_behavior: Agent treats the contact's intent as its opposite or ignores an explicit escalation,
+        wrong-number or distress signal entirely.
+      evidence_required: Contact turn stating the intent + agent turn(s) ignoring or inverting it.
+    1:
+      label: Major misread
+      observable_behavior: Agent recognises some words but acts on the wrong intent for most of the call
+        (e.g. keeps collecting after a dispute is raised).
+      evidence_required: Contact turn + at least one agent turn acting on the wrong intent.
+    2:
+      label: Partial recognition
+      observable_behavior: Agent eventually recognises the main intent but late, or misses a secondary
+        intent (e.g. hears the extension request but misses the distress).
+      evidence_required: Turns showing the delayed or partial recognition.
+    3:
+      label: Correct with minor lapses
+      observable_behavior: Main intent recognised promptly; a minor secondary signal is under-acknowledged.
+      evidence_required: Agent turn acknowledging the main intent; note the minor lapse.
+    4:
+      label: Fully correct
+      observable_behavior: All material intents recognised promptly and reflected in the agent's actions,
+        including checking ambiguous statements.
+      evidence_required: Agent turn(s) reflecting each material intent.
+  positive_examples:
+  - 'Contact: ''I paid that on the 5th.'' Agent: ''Thank you — do you have the transaction reference so
+    we can trace it?'''
+  - 'Contact: ''That''s not me.'' Agent: ''Sorry to bother you; I''ll mark this number as wrong.'''
+  negative_examples:
+  - 'Contact: ''I want a supervisor.'' Agent: ''So, can you pay today?'''
+  - 'Contact: ''I lost my job and can''t cope.'' Agent: ''Sorry to hear that. Can you pay something?'''
+  scenario_rules:
+    FIRST_TIME_DEFAULTER: Distinguish confusion, request for clarification and extension request; confusion
+      is not refusal.
+    REPEAT_DELINQUENT: Avoidance of a date is not a refusal to pay; frustration with calls is a contact-preference
+      intent.
+    WRONG_NUMBER_OR_IDENTITY_MISMATCH: Recognising a wrong party or failed verification is the primary
+      intent.
+    PAYMENT_DISPUTE: Any claim of prior payment, wrong amount or wrong status is a dispute intent.
+    HOSTILE_OR_DISTRESSED: Distress and complaint signals take priority over the payment topic.
+  common_judge_mistakes:
+  - Rewarding the agent for eventually reaching a payment even though the contact's real intent was a
+    dispute.
+  - Treating a polite tone as evidence that intent was understood.
+- id: objection_handling
+  name: Objection handling
+  weight: 0.2
+  description: Did the agent acknowledge the actual objection or question, respond relevantly, avoid unsupported
+    claims and repetitive pressure, respect boundaries, and answer reasonable questions appropriately?
+  observable_behaviors:
+  - Explicit acknowledgement of the objection before responding.
+  - Relevant, factual response; uncertainty admitted rather than invented facts.
+  - No more than one respectful re-ask after a clear 'no' or 'I don't know'.
+  - Boundaries (time, channel, topic) respected.
+  evidence_requirements:
+  - Cite the objection turn and the agent's response turn(s).
+  - For repetitive pressure, cite each repeated ask.
+  - For unsupported claims, quote the claim exactly.
+  applicability:
+    always_applicable: false
+    not_applicable_conditions:
+    - The contact raised no objection, question, concern, pushback, dispute or frustration at any point
+      — i.e. an unconditional commitment with no questions. A denial of identity by a third party DOES
+      count as pushback and keeps this dimension applicable.
+    never_not_applicable_when:
+    - The contact asked any question, disputed anything, refused, pushed back, or expressed frustration.
+    - The call is difficult to score — difficulty is never a reason to mark N/A.
+  anchors:
+    0:
+      label: Hostile or fabricated response
+      observable_behavior: Agent dismisses or argues with the objection, invents facts to counter it,
+        or applies sustained repetitive pressure.
+      evidence_required: Quote of the fabricated claim, dismissive statement, or each repeated demand.
+    1:
+      label: Objection largely ignored
+      observable_behavior: Agent responds off-topic or with a script, with at least one unsupported claim
+        or repeated demand.
+      evidence_required: Objection turn + non-responsive agent turn.
+    2:
+      label: Acknowledged but weak
+      observable_behavior: Objection acknowledged but the answer is incomplete, vague, or followed by
+        an unnecessary re-ask.
+      evidence_required: Acknowledgement turn + the gap or re-ask.
+    3:
+      label: Good, minor gap
+      observable_behavior: Objection acknowledged and answered relevantly; a minor omission (e.g. no explanation
+        of why) remains.
+      evidence_required: Acknowledgement + response turns.
+    4:
+      label: Fully appropriate
+      observable_behavior: Objection acknowledged, answered accurately (including honest 'I don't know,
+        I'll find out'), no pressure, boundaries respected.
+      evidence_required: Acknowledgement + accurate response turns.
+  positive_examples:
+  - '''I can''t see the itemised breakdown, so I won''t guess — I''ll request a statement for you.'''
+  negative_examples:
+  - '''The extra is a government-mandated penalty, it''s the law.'' (fabricated)'
+  - '''Monday? Tuesday? Wednesday? Thursday?'' after the contact said they don''t know.'
+  scenario_rules:
+    REPEAT_DELINQUENT: Persistence is allowed; repetition of the same demand after a clear answer is not.
+    PAYMENT_DISPUTE: Asserting the system is infallible is an unsupported claim.
+    WRONG_NUMBER_OR_IDENTITY_MISMATCH: Arguing with a denial of identity is objection mishandling.
+  common_judge_mistakes:
+  - Marking N/A because the objection was handled 'well enough' — N/A is only for calls with no objection
+    at all.
+  - Treating confident statements by the agent as accurate without evidence.
+- id: compliance_adherence
+  name: Compliance adherence
+  weight: 0.3
+  description: 'Adherence to the fictional benchmark policy BCP-1: identity verification before account
+    discussion, account privacy, appropriate disclosures (recording notice), respectful language, no threats,
+    escalation requirements, and contact-handling restrictions.'
+  observable_behaviors:
+  - Identity verified before any account detail is discussed.
+  - Recording notice given near the start of the call.
+  - No account details disclosed to third parties.
+  - No threats, coercion, insults or demeaning language.
+  - Stop-contact, complaint, supervisor and distress signals handled per policy.
+  - No collection pressure on an amount the contact is actively disputing.
+  evidence_requirements:
+  - Cite the verification turns (or their absence) and any disclosure turn.
+  - Quote any threatening, coercive or demeaning language exactly.
+  - For escalation handling, cite the request and the agent's response.
+  applicability:
+    always_applicable: true
+    never_not_applicable_when:
+    - 'Always applicable: every call is subject to BCP-1.'
+  anchors:
+    0:
+      label: Severe breach
+      observable_behavior: A critical-gate-level breach (pre-verification or third-party disclosure, threat/coercion/abuse,
+        ignored stop-contact or escalation).
+      evidence_required: Exact quote of the breaching turn.
+    1:
+      label: Multiple material breaches
+      observable_behavior: No gate-level breach, but several material problems (e.g. pressure on a disputed
+        amount plus no recording notice plus unsupported claims).
+      evidence_required: Quotes for each breach.
+    2:
+      label: One material breach
+      observable_behavior: One material non-critical breach, such as continued collection pressure during
+        a dispute, or interrogating a third party.
+      evidence_required: Quote of the breach.
+    3:
+      label: Minor lapse
+      observable_behavior: Procedurally compliant with a minor lapse, e.g. missing recording notice, slightly
+        casual verification phrasing.
+      evidence_required: Turn showing the lapse (or the absence of a notice in the opening turns).
+    4:
+      label: Fully compliant
+      observable_behavior: Verification before disclosure, recording notice, privacy protected, respectful
+        throughout, escalations honoured.
+      evidence_required: Verification and notice turns; absence of breaches.
+  positive_examples:
+  - '''This call is recorded... could you confirm your date of birth?'' before mentioning the account.'
+  negative_examples:
+  - '''I''m calling about the overdue payment of $410 — am I speaking with Jo?'' (pre-verification disclosure)'
+  scenario_rules:
+    WRONG_NUMBER_OR_IDENTITY_MISMATCH: Any account detail to an unverified or third party is a severe
+      breach.
+    PAYMENT_DISPUTE: Collection pressure on the disputed amount is at least a material breach.
+    HOSTILE_OR_DISTRESSED: Continued pressure after distress disclosure is a severe breach.
+  common_judge_mistakes:
+  - Scoring compliance high because the call ended in payment.
+  - Penalising the agent for the borrower's rudeness (borrower conduct is not agent misconduct).
+- id: fallback_grace
+  name: Fallback grace
+  weight: 0.15
+  description: When uncertainty, missing information or an unresolvable situation arises, does the agent
+    recognise it, ask for clarification, avoid hallucinating facts, route appropriately, end the call
+    gracefully where necessary, and stop any inappropriate disclosure?
+  observable_behaviors:
+  - Explicitly admits missing information instead of inventing it.
+  - Asks a clarifying question when statements are ambiguous or contradictory.
+  - Routes to the correct team or channel when the agent cannot resolve the issue.
+  - Ends calls with unverifiable or wrong parties politely and promptly.
+  evidence_requirements:
+  - Cite the turn where uncertainty arises and the agent's handling of it.
+  - Quote any hallucinated or unsupported fact.
+  applicability:
+    always_applicable: false
+    not_applicable_conditions:
+    - No uncertainty, ambiguity, missing information, unresolved issue, failed verification, wrong party
+      or need to terminate arose at any point in the call.
+    never_not_applicable_when:
+    - The contact asked a question the agent could not fully answer.
+    - The contact made contradictory or uncertain statements.
+    - Verification failed or the contact was not the borrower.
+    - The call needed routing, escalation or early termination.
+  anchors:
+    0:
+      label: Hallucination or harmful continuation
+      observable_behavior: Agent invents facts, or continues an inappropriate disclosure/conversation
+        when it should stop.
+      evidence_required: Quote of the invented fact or continued disclosure.
+    1:
+      label: Uncertainty mishandled
+      observable_behavior: Agent ignores uncertainty or guesses confidently; no routing.
+      evidence_required: Uncertain turn + agent's guess or omission.
+    2:
+      label: Partial
+      observable_behavior: 'Agent notices uncertainty but handles it vaguely: a hand-off with no owner,
+        timeframe or concrete channel (e.g. ''someone might look at it'', ''you may hear back'').'
+      evidence_required: Turn showing vague handling.
+    3:
+      label: Good, minor gap
+      observable_behavior: Uncertainty named and routed to a specific team/channel, but one of owner,
+        timeframe or what-happens-next is missing.
+      evidence_required: Recognition and routing turns.
+    4:
+      label: Exemplary
+      observable_behavior: Uncertainty named explicitly, no guessing, clear routing or graceful termination,
+        and the contact knows what happens next.
+      evidence_required: Recognition, routing/termination and explanation turns.
+  positive_examples:
+  - '''I''m honestly not certain whether a late fee has been applied, and I don''t want to guess.'''
+  negative_examples:
+  - '''There''s definitely no fee, it''ll all be wiped.'' (unsupported certainty)'
+  scenario_rules:
+    WRONG_NUMBER_OR_IDENTITY_MISMATCH: Graceful termination without disclosure is the expected fallback.
+    PAYMENT_DISPUTE: Routing to disputes/verification rather than asserting records is expected.
+  common_judge_mistakes:
+  - Marking N/A on calls where a question went unanswered.
+  - Rewarding a confident tone as if it were accuracy.
+- id: resolution_quality
+  name: Resolution quality
+  weight: 0.15
+  description: Did the agent establish an appropriate, specific next step for the scenario? Valid outcomes
+    include a confirmed payment step, a payment-related follow-up, a dispute referral, wrong-number handling,
+    escalation, safe termination, or an unresolved case appropriately routed for review. Payment is NOT
+    the only successful outcome.
+  observable_behaviors:
+  - A specific next step (who, what, when) is agreed or communicated.
+  - The next step matches the scenario (e.g. dispute referral for disputes).
+  - The agent confirms or summarises the next step back to the contact.
+  evidence_requirements:
+  - Cite the turn(s) establishing and confirming the next step.
+  - If no next step exists, say so explicitly.
+  applicability:
+    always_applicable: true
+    never_not_applicable_when:
+    - 'Always applicable: even a wrong-number call requires appropriate handling and closure.'
+  anchors:
+    0:
+      label: Harmful or absent
+      observable_behavior: No next step, or an inappropriate one obtained through pressure or misinformation.
+      evidence_required: Closing turns showing absence or coercion.
+    1:
+      label: Inappropriate or unsupported
+      observable_behavior: A next step that does not fit the scenario, or is based on unsupported promises.
+      evidence_required: Turn with the mismatched or unsupported step.
+    2:
+      label: Vague
+      observable_behavior: Next step exists but is vague (no date, owner, or amount) or not confirmed.
+      evidence_required: Turn with the vague step.
+    3:
+      label: Specific, minor gap
+      observable_behavior: Appropriate, specific next step, but not summarised or a detail is missing.
+      evidence_required: Turn with the specific step.
+    4:
+      label: Specific and confirmed
+      observable_behavior: Appropriate, specific next step, confirmed or summarised back to the contact.
+      evidence_required: Step turn + confirmation/summary turn.
+  positive_examples:
+  - '''To summarise: payment trace raised for TRX-123, collection paused, disputes team will contact you
+    within five working days.'''
+  - 'Wrong number: ''I''ll mark this number as not belonging to them so we don''t call you again.'''
+  negative_examples:
+  - '''Right. That''s all then.'' after no agreement.'
+  scenario_rules:
+    WRONG_NUMBER_OR_IDENTITY_MISMATCH: Correct closure without disclosure scores 4 even though no payment
+      discussion occurs.
+    HOSTILE_OR_DISTRESSED: A support referral or honoured stop-contact can score 4.
+    PAYMENT_DISPUTE: A dispute referral with a timeline can score 4.
+  common_judge_mistakes:
+  - Penalising appropriate non-payment outcomes.
+  - Rewarding a payment commitment obtained through threats.
+critical_gates:
+- gate_id: G1_PRE_VERIFICATION_DISCLOSURE
+  name: Disclosure before identity verification
+  severity: critical
+  applicable_conditions:
+  - The call is directed to a named borrower.
+  violation_definition: The agent discloses account information (product, amount, delinquency, balance
+    or reason for the call beyond the lender's name) before the contact has been verified, or after verification
+    has failed.
+  not_a_violation:
+  - Stating the agent's own name and the lender's name before verification.
+  evidence_requirements:
+  - Quote the disclosing turn and identify where verification occurred (or did not).
+  override_behavior: A confirmed violation makes the decision FAIL regardless of score.
+- gate_id: G2_THIRD_PARTY_DISCLOSURE
+  name: Disclosure to a third party
+  severity: critical
+  applicable_conditions:
+  - The contact is, or says they are, someone other than the borrower.
+  violation_definition: The agent discloses account information about the borrower to an unrelated third
+    party (spouse, colleague, new subscriber, or anyone who denies being the borrower), or asks them to
+    pass on a message describing the debt.
+  not_a_violation:
+  - Asking for the borrower by name.
+  evidence_requirements:
+  - Quote the turn where the contact is identified as a third party and the disclosing turn.
+  override_behavior: A confirmed violation makes the decision FAIL regardless of score.
+- gate_id: G3_THREAT_OR_COERCION
+  name: Threats, coercion or abusive language
+  severity: critical
+  applicable_conditions:
+  - Applicable to every call.
+  violation_definition: The agent threatens arrest, police involvement, imminent legal action or asset
+    seizure as pressure, threatens to contact the borrower's employer, family or other lenders, or uses
+    insulting or demeaning language.
+  not_a_violation:
+  - Borrower insults or threats (borrower conduct is not agent misconduct).
+  evidence_requirements:
+  - Quote the threatening or abusive agent turn exactly.
+  override_behavior: A confirmed violation makes the decision FAIL regardless of score.
+- gate_id: G4_STOP_CONTACT_OR_ESCALATION_FAILURE
+  name: Failure to follow stop-contact or escalation instruction
+  severity: critical
+  applicable_conditions:
+  - The contact asks the agent to stop calling, asks for a supervisor or to complain, or discloses distress/vulnerability.
+  violation_definition: After an applicable request or disclosure, the agent refuses, ignores or overrides
+    it. A SINGLE clarifying or closing question asked once, immediately followed by compliance, is NOT
+    a violation; continued solicitation of payment after the request, or a flat refusal of a supervisor/complaint,
+    IS.
+  not_a_violation:
+  - Explaining that written correspondence may still be required by law.
+  - One clarifying question asked once and then the request is honoured.
+  evidence_requirements:
+  - Quote the request/disclosure turn and the agent's non-compliant response.
+  override_behavior: A confirmed violation makes the decision FAIL regardless of score.
+heuristic_rules:
+  lender_name_to_third_party_is_disclosure: true
+  legal_terms_count_as_threat_without_condition: true
+  stop_request_payment_ask_before_acknowledgement: no_violation
+  resolution_requires_summary_for_4: true
+changelog:
+- change_id: v2-C1
+  area: objection_handling.applicability
+  previous_definition: The contact raised no objection, question, concern or pushback at any point in
+    the call (e.g. an immediate, unconditional commitment with no questions).
+  updated_definition: The contact raised no objection, question, concern, pushback, dispute or frustration
+    at any point — i.e. an unconditional commitment with no questions. A denial of identity by a third
+    party DOES count as pushback and keeps this dimension applicable.
+  motivation: Calibration showed judges marking objection handling N/A on wrong-number calls where a third
+    party disputed identity, inflating apparent agreement by removing hard cases.
+  relevant_examples:
+  - 'BFSI-C-*: contact denies identity'
+  expected_improvement: Fewer INCORRECT_APPLICABILITY disagreements on category C.
+  measured_effect: See results/analysis/agreement_dimensions_v2.csv vs _v1.csv (populated after human
+    labels exist).
+  potential_regressions: May lower objection-handling scores on genuine no-objection calls if misapplied.
+- change_id: v2-C2
+  area: fallback_grace.anchors.2-3
+  previous_definition: Agent notices uncertainty but handles it vaguely (e.g. 'someone might look at it').
+  updated_definition: 'Agent notices uncertainty but handles it vaguely: a hand-off with no owner, timeframe
+    or concrete channel (e.g. ''someone might look at it'', ''you may hear back'').'
+  motivation: The 2 vs 3 boundary was ambiguous; vague hand-offs were scored inconsistently.
+  relevant_examples:
+  - adequate-tier calls with "someone might look at it"
+  expected_improvement: Lower MAE on fallback_grace.
+  measured_effect: Pending human labels.
+  potential_regressions: None expected.
+- change_id: v2-C3
+  area: G4_STOP_CONTACT_OR_ESCALATION_FAILURE.violation_definition
+  previous_definition: After an applicable request or disclosure, the agent refuses, ignores, or overrides
+    it — e.g. continues collection pressure after a stop-contact request or distress disclosure, or refuses
+    a supervisor or complaint request.
+  updated_definition: After an applicable request or disclosure, the agent refuses, ignores or overrides
+    it. A SINGLE clarifying or closing question asked once, immediately followed by compliance, is NOT
+    a violation; continued solicitation of payment after the request, or a flat refusal of a supervisor/complaint,
+    IS.
+  motivation: Borderline adequate-tier calls asked one further question before complying; whether this
+    breached G4 was ambiguous and drove gate disagreements.
+  relevant_examples:
+  - BFSI-E-* refusal_to_continue adequate tier
+  expected_improvement: Fewer UNCERTAIN/overcalled G4 assessments.
+  measured_effect: Pending human labels.
+  potential_regressions: Risk of under-calling a genuine failure if the "single question" carve-out is
+    abused.

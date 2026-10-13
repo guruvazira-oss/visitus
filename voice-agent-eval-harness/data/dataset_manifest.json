@@ -1,0 +1,151 @@
+{
+  "dataset_version": "bfsi-collections-v1.0",
+  "generation_seed": 20260415,
+  "generator": "src/voice_eval/generation/synthetic_generator.py (deterministic templates, no LLM)",
+  "fictional_institution": "Harbourline Finance",
+  "n_transcripts": 100,
+  "transcripts_file": "data/transcripts.jsonl",
+  "transcripts_sha256": "d1c93047bd25f522abcee154954eb169f00a5d57b50758d755c5124d9835de26",
+  "readable_csv": "data/transcripts_readable.csv",
+  "generated_at": "2026-10-13T06:27:49+00:00",
+  "validation_ok": true,
+  "validation_errors": [],
+  "validation_warnings": [],
+  "statistics": {
+    "by_category": {
+      "FIRST_TIME_DEFAULTER": 20,
+      "REPEAT_DELINQUENT": 20,
+      "WRONG_NUMBER_OR_IDENTITY_MISMATCH": 20,
+      "PAYMENT_DISPUTE": 20,
+      "HOSTILE_OR_DISTRESSED": 20
+    },
+    "by_subtype": {
+      "FIRST_TIME_DEFAULTER/confused_missed_instalment": 4,
+      "FIRST_TIME_DEFAULTER/apologetic_cooperative": 4,
+      "FIRST_TIME_DEFAULTER/clarification_request": 4,
+      "FIRST_TIME_DEFAULTER/extension_request": 4,
+      "FIRST_TIME_DEFAULTER/supervisor_request_fee": 4,
+      "REPEAT_DELINQUENT/repeated_broken_commitments": 4,
+      "REPEAT_DELINQUENT/avoids_definite_date": 4,
+      "REPEAT_DELINQUENT/repeated_extension_requests": 4,
+      "REPEAT_DELINQUENT/frustrated_by_prior_calls": 4,
+      "REPEAT_DELINQUENT/contradictory_partial_payment": 4,
+      "WRONG_NUMBER_OR_IDENTITY_MISMATCH/third_party_answers": 4,
+      "WRONG_NUMBER_OR_IDENTITY_MISMATCH/contact_denies_identity": 4,
+      "WRONG_NUMBER_OR_IDENTITY_MISMATCH/number_reassigned": 4,
+      "WRONG_NUMBER_OR_IDENTITY_MISMATCH/identity_cannot_be_established": 4,
+      "WRONG_NUMBER_OR_IDENTITY_MISMATCH/workplace_colleague_answers": 4,
+      "PAYMENT_DISPUTE/claims_already_paid": 4,
+      "PAYMENT_DISPUTE/disputes_amount": 4,
+      "PAYMENT_DISPUTE/challenges_account_status": 4,
+      "PAYMENT_DISPUTE/requests_written_verification": 4,
+      "PAYMENT_DISPUTE/contradictory_dispute": 4,
+      "HOSTILE_OR_DISTRESSED/angry_borrower": 4,
+      "HOSTILE_OR_DISTRESSED/threatened_complaint": 4,
+      "HOSTILE_OR_DISTRESSED/refusal_to_continue": 4,
+      "HOSTILE_OR_DISTRESSED/borrower_distress": 4,
+      "HOSTILE_OR_DISTRESSED/hostile_then_cooperative": 4
+    },
+    "by_difficulty": {
+      "easy": 13,
+      "medium": 54,
+      "hard": 33
+    },
+    "by_quality_tier": {
+      "exemplary": 25,
+      "adequate": 25,
+      "deficient": 25,
+      "critical": 25
+    },
+    "by_outcome_band": {
+      "PASS_EXPECTED": 25,
+      "BORDERLINE": 25,
+      "FAIL_EXPECTED": 50
+    },
+    "by_expected_resolution": {
+      "PAYMENT_COMMITMENT": 24,
+      "PAYMENT_PLAN_REFERRAL": 16,
+      "ESCALATED_TO_SUPERVISOR": 8,
+      "CALLBACK_SCHEDULED": 16,
+      "WRONG_NUMBER_CLOSED": 8,
+      "SAFE_TERMINATION": 8,
+      "DISPUTE_REFERRAL": 16,
+      "SUPPORT_REFERRAL": 4
+    },
+    "by_communication_style": {
+      "verbose": 20,
+      "formal": 16,
+      "colloquial": 17,
+      "terse": 24,
+      "anxious": 23
+    },
+    "expected_gate_violations": {
+      "G1_PRE_VERIFICATION_DISCLOSURE": 6,
+      "G3_THREAT_OR_COERCION": 8,
+      "G4_STOP_CONTACT_OR_ESCALATION_FAILURE": 8,
+      "G2_THIRD_PARTY_DISCLOSURE": 3
+    },
+    "modifiers": {
+      "repeated_question": 12,
+      "contradiction": 6,
+      "agent_uncertainty": 10,
+      "prompt_injection": 10
+    },
+    "prompt_injection_classes": {
+      "fake_system_message": 2,
+      "quoted_instruction": 2,
+      "direct_instruction": 2,
+      "suppress_compliance_failure": 2,
+      "alter_scoring_scale": 2
+    },
+    "turns": {
+      "min": 5,
+      "max": 21,
+      "mean": 12.88
+    },
+    "words": {
+      "min": 44,
+      "max": 325,
+      "mean": 163.8
+    },
+    "duplicate_check": {
+      "exact_duplicate_conversations": 0,
+      "near_duplicate_threshold": 0.85,
+      "near_duplicate_pairs": [],
+      "max_pairwise_jaccard": 0.411,
+      "mean_pairwise_jaccard": 0.0387,
+      "top_5_most_similar": [
+        [
+          0.411,
+          "BFSI-B-013",
+          "BFSI-B-016"
+        ],
+        [
+          0.326,
+          "BFSI-A-001",
+          "BFSI-A-004"
+        ],
+        [
+          0.319,
+          "BFSI-B-013",
+          "BFSI-B-014"
+        ],
+        [
+          0.302,
+          "BFSI-A-009",
+          "BFSI-A-012"
+        ],
+        [
+          0.296,
+          "BFSI-C-010",
+          "BFSI-C-012"
+        ]
+      ]
+    }
+  },
+  "disclaimers": [
+    "All conversations, people, institutions and policies are fictional.",
+    "intended_agent_behavior and expected_critical_violations are synthetic test specifications written by the generator author, not independent ground truth.",
+    "The committed transcripts.jsonl is the frozen experimental artifact."
+  ]
+}
